@@ -15,11 +15,22 @@ class Article:
     def title(self):
         return self._title
 
+    @property
+    def author(self):
+        return self._author
+
+    @property
+    def magazine(self):
+        return self._magazine
+
 
 # Instances of Article
 this_love = Article("Medrine", "Parents", "This Love")
+this_book = Article("Job", "Say", "This Yes")
 print(this_love)
 print(this_love.title)
+print(this_love.author)
+print(this_love.magazine)
 
 # List of all Article instances
 for instance in Article.instances:
