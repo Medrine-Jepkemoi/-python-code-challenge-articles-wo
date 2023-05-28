@@ -1,7 +1,13 @@
-class Magazine:
+import weakref
+
+
+class Magazine():
+
+    instances = []
     def __init__ (self, name, category):
         self._name = name
         self._category = category
+        self.__class__.instances.append(weakref.proxy(self))
 
     @property
     def name(self):
@@ -23,6 +29,8 @@ class Magazine:
 
 
 love = Magazine("Loving", "Relationships")
+
+faith = Magazine("Faithful", "Worship")
 # print(love.name)
 love.name = "Hope"
 print(love.name)
@@ -30,4 +38,14 @@ print(love.name)
 # print(love.category)
 love.category = "Sports"
 print(love.category)
+
+for instance in Magazine.instances:
+    print(instance.name)
+    print(instance.category)
+    print(len(Magazine.instances))
+
+
+
+
+
 
