@@ -27,7 +27,7 @@ class Magazine():
     def category(self, value):
         self._category = value
 
-
+# Magazine instances
 love = Magazine("Loving", "Relationships")
 
 faith = Magazine("Faithful", "Worship")
@@ -39,10 +39,12 @@ print(love.name)
 love.category = "Sports"
 print(love.category)
 
+
+# List of all Magazine Instances
 for instance in Magazine.instances:
-    print(instance.name)
-    print(instance.category)
-    print(len(Magazine.instances))
+    # print(instance.name)
+    # print(instance.category)
+    print(Magazine.instances)
 
 
 
