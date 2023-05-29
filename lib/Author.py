@@ -1,33 +1,41 @@
-class Author:
+from Article import Article
 
+
+# Initializing author attributes
+class Author:
     def __init__(self, name):
         self._name = name
-        self.article_list = []
+        self._article = []
 
+    # getter for authors name
     @property
     def name(self):
         return self._name
-        
-    @name.setter
-    def name(self):
-        pass
-
+    
+    # list of Article instances the author has written
     @property
     def articles(self):
-        return self._articles
+        return self._article
 
-    @property
-    def magazines(self):
-        unique_magazine = set()
-        for article in self.article_list:
-            unique_magazine.add(article.magazine)
-        return list(unique_magazine)
+    # **unique** list of Magazine instances for which the author has contributed to
+    def magazine(self):
+        pk_magazines = set()
+        for article in self._article:
+            pk_magazines.add(article.magazine())
+        return list(pk_magazines)
 
-    def add_article(self, magazine, title):
+    # Creates a new Article instance and associates it with that author and that magazine.
+    def article_instance(self, magazine, title):
         article = Article(self, magazine, title)
-        self._articles.append(article)
+        self._article.append(article)
+    
+    #  **unique** list of strings with the categories of the magazines the author has contributed to
     def topic_areas(self):
-        return list({article.magazine().category() for article in self._articles})
+        pk_mag_categories = set()
+        for article in self._article:
+            pk_mag_categories.add(article.magazine().category())
+        return list(pk_mag_categories)
+
 
 
 medrine = Author("Joy")
