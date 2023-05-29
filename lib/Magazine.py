@@ -9,7 +9,7 @@ class Magazine():
         self._category = category
         self.__class__.instances.append(weakref.proxy(self))
         self.articles = []
-        self.magazines_list.append(self)
+        
 
     @property
     def name(self):
@@ -29,10 +29,11 @@ class Magazine():
     def category(self, value):
         self._category = value
 
-    #list of all magazine instances
+    def contributors(self):
+        return list({article.author() for article in self._articles})
+        
     @classmethod
-    def all(cls):
-        return cls.magazines_list
+    def find_by_name()
 
 # Magazine instances
 love = Magazine("Loving", "Relationships")

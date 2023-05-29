@@ -2,23 +2,27 @@ import weakref
 
 
 class Article:
-    instances = []
+    # list to store all article instances
+    article_instances = []
 
+    # Initializing article attributes
     def __init__(self, author, magazine, title):
         self._author = author
         self._magazine = magazine
         self._title = title
-        self.__class__.instances.append(weakref.proxy(self))
+        self.__class__.article_instances.append(weakref.proxy(self))
 
-
+    # Getter for article's title
     @property
     def title(self):
         return self._title
 
+    # Getter for article's author
     @property
     def author(self):
         return self._author
 
+    # Getter for article's magazine
     @property
     def magazine(self):
         return self._magazine
@@ -32,6 +36,6 @@ print(this_love.title)
 print(this_love.author)
 print(this_love.magazine)
 
-# List of all Article instances
-for instance in Article.instances:
-    print(Article.instances)
+# List of all Article Instances
+for instance in Article.article_instances:
+    print(Article.article_instances)

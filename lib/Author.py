@@ -23,6 +23,12 @@ class Author:
             unique_magazine.add(article.magazine)
         return list(unique_magazine)
 
+    def add_article(self, magazine, title):
+        article = Article(self, magazine, title)
+        self._articles.append(article)
+    def topic_areas(self):
+        return list({article.magazine().category() for article in self._articles})
+
 
 medrine = Author("Joy")
 print(medrine.name)
