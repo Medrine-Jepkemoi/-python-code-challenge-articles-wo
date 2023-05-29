@@ -8,6 +8,8 @@ class Magazine():
         self._name = name
         self._category = category
         self.__class__.instances.append(weakref.proxy(self))
+        self.articles = []
+        self.magazines_list.append(self)
 
     @property
     def name(self):
@@ -26,6 +28,11 @@ class Magazine():
     @category.setter
     def category(self, value):
         self._category = value
+
+    #list of all magazine instances
+    @classmethod
+    def all(cls):
+        return cls.magazines_list
 
 # Magazine instances
 love = Magazine("Loving", "Relationships")
